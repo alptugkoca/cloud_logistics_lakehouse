@@ -11,7 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DBT_PROFILES_DIR: ~/.dbt
+      # Use an absolute path to ensure dbt can find the directory
+      DBT_PROFILES_DIR: /home/runner/.dbt
 
     steps:
       - name: Checkout repository
@@ -27,8 +28,8 @@ jobs:
 
       - name: Create dbt profile
         run: |
-          mkdir -p ~/.dbt
-          cat > ~/.dbt/profiles.yml <<EOF
+          mkdir -p /home/runner/.dbt
+          cat > /home/runner/.dbt/profiles.yml <<EOF
           cloud_logistics_dbt:
             target: dev
             outputs:
