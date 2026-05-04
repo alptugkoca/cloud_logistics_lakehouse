@@ -28,21 +28,20 @@ jobs:
 
       - name: Create dbt profile
         run: |
-          cat > cloud_logistics_dbt/profiles.yml <<'EOF'
-          cloud_logistics_dbt:
-            target: dev
-            outputs:
-              dev:
-                type: snowflake
-                account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-                user: ${{ secrets.SNOWFLAKE_USER }}
-                password: ${{ secrets.SNOWFLAKE_PASSWORD }}
-                role: ACCOUNTADMIN
-                database: LOGISTICS_DB
-                warehouse: COMPUTE_WH
-                schema: GOLD
-                threads: 1
-          EOF
+          mkdir -p cloud_logistics_dbt
+          echo "cloud_logistics_dbt:" > cloud_logistics_dbt/profiles.yml
+          echo "  target: dev" >> cloud_logistics_dbt/profiles.yml
+          echo "  outputs:" >> cloud_logistics_dbt/profiles.yml
+          echo "    dev:" >> cloud_logistics_dbt/profiles.yml
+          echo "      type: snowflake" >> cloud_logistics_dbt/profiles.yml
+          echo "      account: ${{ secrets.SNOWFLAKE_ACCOUNT }}" >> cloud_logistics_dbt/profiles.yml
+          echo "      user: ${{ secrets.SNOWFLAKE_USER }}" >> cloud_logistics_dbt/profiles.yml
+          echo "      password: ${{ secrets.SNOWFLAKE_PASSWORD }}" >> cloud_logistics_dbt/profiles.yml
+          echo "      role: ACCOUNTADMIN" >> cloud_logistics_dbt/profiles.yml
+          echo "      database: LOGISTICS_DB" >> cloud_logistics_dbt/profiles.yml
+          echo "      warehouse: COMPUTE_WH" >> cloud_logistics_dbt/profiles.yml
+          echo "      schema: GOLD" >> cloud_logistics_dbt/profiles.yml
+          echo "      threads: 1" >> cloud_logistics_dbt/profiles.yml
 
       - name: dbt debug
         working-directory: cloud_logistics_dbt
