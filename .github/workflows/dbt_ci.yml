@@ -29,30 +29,21 @@ jobs:
       - name: Create dbt profile
         run: |
           mkdir -p ~/.dbt
-          python - <<'PY'
-          from pathlib import Path
-
-          profile = """cloud_logistics_dbt:
-            target: dev
-            outputs:
-              dev:
-                type: snowflake
-                account: ${SNOWFLAKE_ACCOUNT}
-                user: ${SNOWFLAKE_USER}
-                password: ${SNOWFLAKE_PASSWORD}
-                role: ACCOUNTADMIN
-                database: LOGISTICS_DB
-                warehouse: COMPUTE_WH
-                schema: GOLD
-                threads: 1
-          """
-
-          Path.home().joinpath(".dbt", "profiles.yml").write_text(profile)
-          PY
-        env:
-          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-          SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
-          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+          cat <<EOF > ~/.dbt/profiles.yml
+cloud_logistics_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+      user: ${{ secrets.SNOWFLAKE_USER }}
+      password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+      role: ACCOUNTADMIN
+      database: LOGISTICS_DB
+      warehouse: COMPUTE_WH
+      schema: GOLD
+      threads: 1
+EOF
 
       - name: dbt debug
         working-directory: cloud_logistics_dbt
