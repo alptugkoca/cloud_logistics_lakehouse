@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: mart_alerts
+    description: "Alert mart combining prediction error and anomaly signals"
+    columns:
+      - name: route_id
+        tests:
+          - not_null
+      - name: alert_severity
+        description: "Priority level based on prediction error percentage"
+
+  - name: mart_data_quality
+    description: "Data quality monitoring mart for logistics cost data"
+    columns:
+      - name: quality_status
+        tests:
+          - not_null
+
+  - name: mart_route_performance
+    description: "Aggregated logistics cost performance per route and transport mode"
+    columns:
+      - name: route_id
+        description: "Route identifier, for example NL-DE"
+        tests:
+          - not_null
+      - name: avg_cost
+        description: "Average shipment cost in EUR"
+        tests:
+          - not_null
+      - name: efficiency_flag
+        description: "Cost efficiency classification"

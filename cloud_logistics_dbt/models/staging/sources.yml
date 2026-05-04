@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: gold
+    database: LOGISTICS_DB
+    schema: GOLD
+    tables:
+      - name: cost_predictions
+      - name: gold_cost_anomalies
+      - name: route_performance
+      - name: data_quality_checks

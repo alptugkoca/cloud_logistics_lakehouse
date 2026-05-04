@@ -1,0 +1,13 @@
+incident_type,severity,incident_count
+delay,high,94
+customs_issue,high,12
+delay,low,96
+theft,low,31
+theft,high,35
+customs_issue,low,15
+delay,medium,81
+damage,high,38
+damage,low,24
+theft,medium,26
+damage,medium,37
+customs_issue,medium,11

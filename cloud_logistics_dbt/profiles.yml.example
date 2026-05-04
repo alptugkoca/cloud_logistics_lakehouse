@@ -1,0 +1,13 @@
+cloud_logistics_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: YOUR_ACCOUNT
+      user: YOUR_USER
+      password: YOUR_PASSWORD
+      role: ACCOUNTADMIN
+      database: LOGISTICS_DB
+      warehouse: COMPUTE_WH
+      schema: GOLD
+      threads: 1

@@ -1,0 +1,11 @@
+v1
+{"path":"file:///Users/alptugkoca/Desktop/cloud-logistics-lakehouse/data/streaming/events/incident_04b51955-b2d7-45bd-960d-9c36541eaad2.json","timestamp":1775512739421,"batchId":0}
+{"path":"file:///Users/alptugkoca/Desktop/cloud-logistics-lakehouse/data/streaming/events/event_073e76ac-547c-4bc6-b52a-45b8862f8ec6.json","timestamp":1775512740422,"batchId":1}
+{"path":"file:///Users/alptugkoca/Desktop/cloud-logistics-lakehouse/data/streaming/events/event_2a10511a-914d-41e4-b511-ba075fc85a5a.json","timestamp":1775512741428,"batchId":2}
+{"path":"file:///Users/alptugkoca/Desktop/cloud-logistics-lakehouse/data/streaming/events/event_a5b5421f-9663-4529-97c3-eb48cda0bafb.json","timestamp":1775512742433,"batchId":3}
+{"path":"file:///Users/alptugkoca/Desktop/cloud-logistics-lakehouse/data/streaming/events/incident_af71a4ec-c0c7-45cc-9997-d3af62dfead0.json","timestamp":1775512743439,"batchId":4}
+{"path":"file:///Users/alptugkoca/Desktop/cloud-logistics-lakehouse/data/streaming/events/incident_bd6c5c96-54b1-451a-8dab-4f3949e3bc53.json","timestamp":1775512744445,"batchId":5}
+{"path":"file:///Users/alptugkoca/Desktop/cloud-logistics-lakehouse/data/streaming/events/event_f2b341bb-a73c-4231-a4de-86c603d6e42d.json","timestamp":1775512745448,"batchId":6}
+{"path":"file:///Users/alptugkoca/Desktop/cloud-logistics-lakehouse/data/streaming/events/event_07883b65-1dca-412d-83b3-3d84fcc632c4.json","timestamp":1775512746460,"batchId":7}
+{"path":"file:///Users/alptugkoca/Desktop/cloud-logistics-lakehouse/data/streaming/events/event_0a0b9cf2-4cc9-4882-a603-55d8c1511328.json","timestamp":1775512747463,"batchId":8}
+{"path":"file:///Users/alptugkoca/Desktop/cloud-logistics-lakehouse/data/streaming/events/incident_5eb9b563-1261-41ea-af9b-3fac2dbb0c0d.json","timestamp":1775512748470,"batchId":9}

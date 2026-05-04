@@ -1,0 +1,57 @@
+name: dbt CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  dbt-ci:
+    runs-on: ubuntu-latest
+
+    env:
+      DBT_PROFILES_DIR: ./cloud_logistics_dbt
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dbt
+        run: |
+          pip install dbt-core==1.11.8 dbt-snowflake==1.11.4
+
+      - name: Create dbt profile
+        run: |
+          cat > cloud_logistics_dbt/profiles.yml <<PROFILE
+          cloud_logistics_dbt:
+            target: dev
+            outputs:
+              dev:
+                type: snowflake
+                account: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+                user: ${{ secrets.SNOWFLAKE_USER }}
+                password: ${{ secrets.SNOWFLAKE_PASSWORD }}
+                role: ACCOUNTADMIN
+                database: LOGISTICS_DB
+                warehouse: COMPUTE_WH
+                schema: GOLD
+                threads: 1
+          PROFILE
+
+      - name: dbt debug
+        working-directory: cloud_logistics_dbt
+        run: dbt debug
+
+      - name: dbt run
+        working-directory: cloud_logistics_dbt
+        run: dbt run
+
+      - name: dbt test
+        working-directory: cloud_logistics_dbt
+        run: dbt test

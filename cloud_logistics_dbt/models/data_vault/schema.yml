@@ -1,0 +1,78 @@
+version: 2
+
+models:
+  - name: hub_route
+    description: "Data Vault hub storing unique route business keys."
+    columns:
+      - name: route_hk
+        description: "Hashed surrogate key for route."
+        tests:
+          - not_null
+          - unique
+      - name: route_id
+        description: "Natural business key for route, for example NL-DE."
+        tests:
+          - not_null
+          - unique
+
+  - name: hub_transport_mode
+    description: "Data Vault hub storing unique transport mode business keys."
+    columns:
+      - name: transport_mode_hk
+        tests:
+          - not_null
+          - unique
+      - name: transport_mode
+        tests:
+          - not_null
+          - unique
+
+  - name: hub_shipment
+    description: "Data Vault hub storing unique synthetic shipment business keys."
+    columns:
+      - name: shipment_hk
+        tests:
+          - not_null
+          - unique
+      - name: shipment_bk
+        tests:
+          - not_null
+          - unique
+
+  - name: link_shipment_route
+    description: "Data Vault link connecting shipments to routes."
+    columns:
+      - name: shipment_route_lhk
+        tests:
+          - not_null
+          - unique
+      - name: shipment_hk
+        tests:
+          - not_null
+      - name: route_hk
+        tests:
+          - not_null
+
+  - name: link_shipment_transport
+    description: "Data Vault link connecting shipments to transport modes."
+    columns:
+      - name: shipment_transport_lhk
+        tests:
+          - not_null
+          - unique
+      - name: shipment_hk
+        tests:
+          - not_null
+      - name: transport_mode_hk
+        tests:
+          - not_null
+
+  - name: sat_shipment_details
+    description: "Data Vault satellite storing descriptive shipment measures and anomaly attributes."
+    columns:
+      - name: shipment_hk
+        tests:
+          - not_null
+      - name: hashdiff
+        tests:
+          - not_null

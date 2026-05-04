@@ -1,0 +1,11 @@
+USE ROLE ACCOUNTADMIN;
+USE WAREHOUSE COMPUTE_WH;
+USE DATABASE LOGISTICS_DB;
+USE SCHEMA GOLD;
+
+CREATE OR REPLACE VIEW LOGISTICS_DB.GOLD.v_exec_summary AS
+SELECT
+  COUNT(*) AS total_routes,
+  ROUND(AVG("avg_cost"), 2) AS avg_route_cost,
+  ROUND(AVG("avg_cost_per_km"), 2) AS avg_cost_per_km
+FROM LOGISTICS_DB.GOLD.logistics_kpi;

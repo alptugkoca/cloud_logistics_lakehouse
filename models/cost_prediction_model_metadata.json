@@ -1,0 +1,10 @@
+{
+  "silver_table_version": 13,
+  "row_count": 1000,
+  "trained_at": "2026-04-19T11:21:41.921492",
+  "mae": 105.75720150000008,
+  "mse": 99995.71074932182,
+  "rmse": 316.22098404331393,
+  "r2": 0.9703357745409258,
+  "model_path": "models/cost_prediction_model.joblib"
+}

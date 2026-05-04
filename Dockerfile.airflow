@@ -1,0 +1,12 @@
+FROM apache/airflow:2.10.0
+
+USER root
+RUN apt-get update && apt-get install -y openjdk-17-jre-headless procps git && apt-get clean
+RUN java -version
+
+COPY requirements.txt /tmp/requirements.txt
+RUN chown airflow:0 /tmp/requirements.txt && chmod 644 /tmp/requirements.txt
+
+USER airflow
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
+RUN pip install --no-cache-dir dbt-core==1.11.8 dbt-snowflake==1.11.4
